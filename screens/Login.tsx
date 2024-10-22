@@ -1,4 +1,4 @@
-import { CommonActions, navigation } from "@react-navigation/native";
+import { CommonActions, NavigationProp } from "@react-navigation/native";
 import axios from "axios";
 import { SafeAreaView, Text, TextInput, TouchableOpacity, StyleSheet, View, Alert } from "react-native";
 import { useEffect, useState } from 'react';
@@ -6,7 +6,11 @@ import LottieView from "lottie-react-native";
 import validator from 'validator';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export default function Login({ navigation }) {
+type LoginProps = {
+    navigation: NavigationProp<any>
+}
+
+export default function Login({ navigation }: LoginProps) {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
