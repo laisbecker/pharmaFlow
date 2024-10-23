@@ -1,4 +1,4 @@
-import { SafeAreaView, StyleSheet, TouchableOpacity, Text, Image, Button } from "react-native"
+import { SafeAreaView, StyleSheet, TouchableOpacity, Text, Image, Button, View } from "react-native"
 import Header from "../components/Header"
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import { CommonActions, NavigationProp } from "@react-navigation/native";
@@ -38,8 +38,9 @@ export default function Home({ navigation }: HomeProps) {
                     Gerenciar usuários
                 </Text>
             </TouchableOpacity>
-
-            <Button title="Logout" onPress={handleLogout} />
+            <View style={styles.buttonContainer}>
+                <Button title="Logout" onPress={handleLogout} />
+            </View>
         </SafeAreaView >
 
     )
@@ -70,5 +71,10 @@ const styles = StyleSheet.create({
     image: {
         width: 60,
         height: 60
+    },
+    buttonContainer: {
+        flexGrow: 1,
+        alignItems: 'flex-end',
+        justifyContent: 'flex-end'
     }
 })

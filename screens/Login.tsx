@@ -1,6 +1,6 @@
 import { CommonActions, NavigationProp } from "@react-navigation/native";
 import axios from "axios";
-import { SafeAreaView, Text, TextInput, TouchableOpacity, StyleSheet, View, Alert } from "react-native";
+import { SafeAreaView, Text, TextInput, TouchableOpacity, StyleSheet, View } from "react-native";
 import { useEffect, useState } from 'react';
 import LottieView from "lottie-react-native";
 import validator from 'validator';
