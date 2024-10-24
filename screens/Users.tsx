@@ -2,8 +2,8 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { FlatList, SafeAreaView, StyleSheet, Switch, Text, TouchableOpacity, View, Image } from "react-native"
 import AsyncStorage from "@react-native-async-storage/async-storage"
-import { NavigationProp } from "@react-navigation/native";
-
+import { NavigationProp, useFocusEffect } from "@react-navigation/native";
+import Header from "../components/Header"
 interface UsersType {
     id: number,
     name: string,
@@ -29,30 +29,21 @@ export default function Users({navigation}: UserProps) {
             const profile = await AsyncStorage.getItem('userProfile')
 
             setUserProfile(profile || '')
-
-            if (profile === 'admin') {
-                setIcon(require('../assets/administrator.png'))
-            } else if (profile === 'filial') {
-                setIcon(require('../assets/office.png'))
-            } else {
-                setIcon(require('../assets/truck.png'))
-            }
         }
 
         loadUserData()
     }, [])
 
-    useEffect(() => {
+    useFocusEffect(() => {
         axios.get(process.env.EXPO_PUBLIC_API_URL + '/users')
         .then(response => {
-            console.log('Usuários carregados:', response.data); // Log dos usuários carregados
             setUsers(response.data.map((user: UsersType) => ({
                 ...user,
                 status: user.status === 1, // Converte 1 para true e 0 para false
             })));
         })
             .catch(error => console.log(error))
-    }, [])
+    })
 
     function handleChangeStatus(id: number) {
 
@@ -72,10 +63,16 @@ export default function Users({navigation}: UserProps) {
     const renderUser = ({ item }: { item: UsersType }) => {
         const cardStyle = item.status ? styles.active : styles.inactive
 
+        const userIcon = item.profile === 'admin'
+        ? require('../assets/administrator.png')
+        : item.profile === 'filial'
+        ? require('../assets/office.png')
+        : require('../assets/truck.png')
+
         return (
             <View style={[styles.card, cardStyle]}>
                 <View style={styles.userCards}>
-                    {icon && <Image source={icon} style={styles.icon} />}
+                    <Image source={userIcon} style={styles.icon} />
                     <Switch value={!!item.status} onValueChange={() => handleChangeStatus(item.id)} />
                 </View>
                 <View style={styles.alignCard}>
@@ -88,6 +85,7 @@ export default function Users({navigation}: UserProps) {
 
     return (
         <SafeAreaView style={styles.container}>
+            <Header />
             <View style={styles.buttonContainer}>
                 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('CreateUsers')}>
                     <Text>+ Novo usuário</Text>
