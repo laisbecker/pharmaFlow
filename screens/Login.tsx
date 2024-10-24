@@ -26,7 +26,7 @@ export default function Login({ navigation }: LoginProps) {
         }
 
         if (!validator.isEmail(email)) {
-            setErrorMessage('Formato de e-mail inváido')
+            setErrorMessage('O formato de e-mail é inválido!')
             return
         }
 

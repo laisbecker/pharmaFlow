@@ -6,6 +6,9 @@ import Home from './screens/Home';
 import Products from './screens/Products';
 import Users from './screens/Users';
 import CreateUsers from './screens/CreateUsers';
+import ListMov from './screens/ListMov';
+import ListProducts from './screens/ListProducts';
+import RegisterMov from './screens/RegisterMov';
 
 const Stack = createStackNavigator()
 
@@ -16,8 +19,11 @@ export default function App() {
         <Stack.Screen name='Login' component={Login} options={{header: () => <></> }}/>
         <Stack.Screen name='Home' component={Home} options={{header: () => <></> }}/>
         <Stack.Screen name='Products' component={Products} options={{header: () => <></> }}/>
-        <Stack.Screen name='Users' component={Users}/>
-        <Stack.Screen name='CreateUsers' component={CreateUsers}/>
+        <Stack.Screen name='Users' component={Users} options={{header: () => <></> }}/>
+        <Stack.Screen name='CreateUsers' component={CreateUsers} options={{header: () => <></> }}/>
+        <Stack.Screen name='ListProducts' component={ListProducts} options={{header: () => <></> }}/>
+        <Stack.Screen name='ListMov' component={ListMov} options={{header: () => <></> }}/>
+        <Stack.Screen name='RegisterMov' component={RegisterMov} options={{header: () => <></> }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
