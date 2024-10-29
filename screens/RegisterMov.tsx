@@ -3,7 +3,7 @@ import { SafeAreaView, StyleSheet, Text } from 'react-native';
 export default function RegisterMov() {
   return (
     <SafeAreaView>
-        <Text>oi</Text>
+        <Text>oiiiiiiiiiiii</Text>
     </SafeAreaView>
   );
 }
