@@ -3,7 +3,7 @@ import { SafeAreaView, StyleSheet, Text } from 'react-native';
 export default function ListMov() {
   return (
     <SafeAreaView>
-        <Text>oi</Text>
+        <Text>oieeeeeee</Text>
     </SafeAreaView>
   );
 }

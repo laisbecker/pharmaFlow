@@ -25,7 +25,7 @@ export default function Home({ navigation }: HomeProps) {
         <SafeAreaView style={styles.container}>
             <Header />
 
-            <TouchableOpacity style={styles.managementButton} onPress={() => navigation.navigate('Products')}>
+            <TouchableOpacity style={styles.managementButton} onPress={() => navigation.navigate('ListProducts')}>
                 <Image source={require('../assets/box.png')} style={styles.image} />
                 <Text style={styles.textButton}>
                     Gerenciar estoque
