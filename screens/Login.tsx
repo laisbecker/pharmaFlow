@@ -16,8 +16,33 @@ export default function Login({ navigation }: LoginProps) {
     const [password, setPassword] = useState('')
     const [errorMessage, setErrorMessage] = useState('')
 
+    const profileNavigation = (profile: string) => {
+        if (profile === 'admin') {
+            navigation.dispatch(
+                CommonActions.reset({
+                    index: 0,
+                    routes: [{ name: 'Home' }],
+                })
+            )
+        } else if (profile === 'filial') {
+            navigation.dispatch(
+                CommonActions.reset({
+                    index: 0,
+                    routes: [{ name: 'ListMov' }],
+                })
+            )
+        } else {
+            navigation.dispatch(
+                CommonActions.reset({
+                    index: 0,
+                    routes: [{ name: 'Products' }],
+                })
+            );
+        }
+    }
+
     function handleLogin() {
-        //limpar mensagem de erro 
+        //limpa mensagem de erro 
         setErrorMessage('')
 
         if (!email || !password) {
@@ -35,25 +60,10 @@ export default function Login({ navigation }: LoginProps) {
             password
         })
             .then(async (response) => {
-
                 await AsyncStorage.setItem('userName', response.data.name)
                 await AsyncStorage.setItem('userProfile', response.data.profile)
 
-
-                if (response.data.profile === 'admin') {
-                    //navegar para tela home
-                    navigation.dispatch(
-                        CommonActions.reset({
-                            index: 0,
-                            routes: [{ name: 'Home' }],
-                        })
-                    )
-                } else if (response.data.profile === 'filial') {
-                    //navegue tela movimentação
-
-                } else {
-                    //navegue tela movimentação motoristas
-                }
+                profileNavigation(response.data.profile)
             })
             .catch((error) => {
                 console.log('Erro:', error);
@@ -62,19 +72,12 @@ export default function Login({ navigation }: LoginProps) {
     }
 
     useEffect(() => {
-
         const loginStatus = async () => {
-
             const userName = await AsyncStorage.getItem('userName')
             const userProfile = await AsyncStorage.getItem('userProfile')
 
             if (userName && userProfile) {
-                navigation.dispatch(
-                    CommonActions.reset({
-                        index: 0,
-                        routes: [{ name: 'Home' }]
-                    })
-                )
+                profileNavigation(userProfile)
             }
         }
 

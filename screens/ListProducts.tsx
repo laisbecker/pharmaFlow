@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { SafeAreaView, StyleSheet, Text, TextInput, FlatList, View, Image } from 'react-native';
 import axios from 'axios';
+import Header from '../components/Header';
 
 interface ProductsType {
   id: number;
@@ -59,6 +60,7 @@ export default function ListProducts() {
 
   return (
     <SafeAreaView style={styles.container}>
+      <Header/>
       <TextInput
         style={styles.searchInput}
         placeholder="Buscar por nome ou filial"

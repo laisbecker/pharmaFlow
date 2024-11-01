@@ -55,7 +55,7 @@ export default function Users({navigation}: UserProps) {
                     prevUsers.map(user => 
                         user.id === id ? { ...user, status: response.data.status === 1 } : user
                     )
-                );
+                )
             })
             .catch(error => console.log(error))
     }

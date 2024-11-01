@@ -30,24 +30,28 @@ export default function Header() {
 
     return (
         <View style={styles.header}>
-            <Text>Olá, {userName}!</Text>
+            <Text style={styles.textStyle}>Olá, {userName}!</Text>
             {icon && <Image source={icon} style={styles.icon}/>}
-            <Text>Usuário: {userProfile}</Text>
+            <Text style={styles.textStyle}>Usuário: {userProfile}</Text>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     icon: {
-        width: 45,
-        height: 45
+        width: 42,
+        height: 42
     },
     header: {
         flexDirection: 'row',
         alignItems: 'center', 
         justifyContent: 'space-evenly',
-        padding: 5,
+        padding: 10,
         backgroundColor: '#5cb9e432',
         width: '100%'
+    },
+    textStyle: {
+        fontSize: 15,
+        fontWeight: '500'
     }
 })

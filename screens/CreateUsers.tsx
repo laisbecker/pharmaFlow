@@ -69,6 +69,7 @@ export default function CreateUsers({ navigation }: CreationProps) {
 
     return (
         <SafeAreaView style={styles.safeStyle}>
+            <Header />
             <KeyboardAvoidingView
                 behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
                 style={styles.container}
@@ -77,7 +78,6 @@ export default function CreateUsers({ navigation }: CreationProps) {
                     showsVerticalScrollIndicator={false}
                 >
                     <>
-                        <Header />
                         <View style={styles.containerProfile}>
                             <TouchableOpacity style={[styles.icons, profile === 'filial' ? styles.selected : null]} onPress={switchProfileBranch}>
                                 <MaterialCommunityIcons
