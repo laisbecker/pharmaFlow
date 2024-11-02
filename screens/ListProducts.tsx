@@ -17,33 +17,30 @@ export default function ListProducts() {
   const [filteredProducts, setFilteredProducts] = useState<ProductsType[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Função para buscar produtos do backend
   const fetchProducts = () => {
     axios.get(process.env.EXPO_PUBLIC_API_URL + '/products')
       .then(response => {
-        setProducts(response.data);
-        setFilteredProducts(response.data); // Inicializa a lista filtrada
+        setProducts(response.data)
+        setFilteredProducts(response.data)
       })
       .catch(error => {
         console.error('Erro ao buscar produtos:', error);
-      });
-  };
+      })
+  }
 
   useEffect(() => {
-    fetchProducts();
-  }, []);
+    fetchProducts()
+  }, [])
 
-  // Função para filtrar produtos
   const filterProducts = () => {
-    const lowercasedFilter = searchTerm.toLowerCase();
+    const lowercasedFilter = searchTerm.toLowerCase()
     const filteredData = products.filter(product =>
       product.product_name?.toLowerCase().includes(lowercasedFilter) ||
-      product.branch_name?.toLowerCase().includes(lowercasedFilter) // Ajuste aqui para usar o nome da filial
-    );
-    setFilteredProducts(filteredData);
-  };
+      product.branch_name?.toLowerCase().includes(lowercasedFilter)
+    )
+    setFilteredProducts(filteredData)
+  }
 
-  // Função para renderizar cada item da lista
   const renderProduct = ({ item }: { item: ProductsType }) => (
     <View style={styles.productCard}>
       <View style={styles.styleSection}>
@@ -60,7 +57,8 @@ export default function ListProducts() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header/>
+      <Header />
+      <Text style={styles.title}>Listagem de produtos</Text>
       <TextInput
         style={styles.searchInput}
         placeholder="Buscar por nome ou filial"
@@ -89,13 +87,16 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingHorizontal: 10,
     margin: 15,
+    backgroundColor: '#fff'
   },
   productCard: {
     backgroundColor: '#fff',
     borderRadius: 10,
     padding: 10,
     margin: 15,
-    alignItems: 'center'
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#000000'
   },
   styleSection: {
     width: '100%',
@@ -133,5 +134,12 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: 'black',
     fontWeight: '500'
-  }  
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: '500',
+    alignSelf: 'center',
+    marginTop: 25,
+    marginBottom: 10
+  }
 });

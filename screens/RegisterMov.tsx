@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { SafeAreaView, StyleSheet, Text, TextInput, View, KeyboardAvoidingView, Platform, ScrollView, TouchableOpacity, Alert } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, TextInput, View, KeyboardAvoidingView, Platform, ScrollView, TouchableOpacity, Alert, TextBase } from 'react-native';
 import Header from '../components/Header';
 import axios from 'axios';
 import RNPickerSelect from 'react-native-picker-select';
@@ -106,6 +106,7 @@ export default function RegisterMov() {
         <ScrollView contentContainerStyle={styles.scroll}
           showsVerticalScrollIndicator={false}
         >
+          <Text style={styles.titleStyle}>Nova movimentação</Text>
           <View style={styles.formContainer}>
             <Text>Filial de origem</Text>
             <RNPickerSelect
@@ -142,24 +143,25 @@ export default function RegisterMov() {
               placeholder={{ label: 'Selecione um produto', value: null }}
             />
 
-            <Text style={styles.titleStyle}>Nova movimentação</Text>
             <Text>Quantidade desejada</Text>
             <TextInput
               style={styles.input}
               value={quantity}
               onChangeText={setQuantity}
               keyboardType='numeric'
+              placeholder='Digite a quantidade desejada'
             />
             <Text>Observações</Text>
             <TextInput
               style={styles.input}
               value={obs}
               onChangeText={setObs}
+              placeholder='Digite uma observação, caso haja'
             />
             {errorMessage ? <Text style={styles.error}>{errorMessage}</Text> : null}
           </View>
           <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-            <Text>Cadastrar</Text>
+            <Text style={styles.textButton}>Cadastrar</Text>
           </TouchableOpacity>
         </ScrollView>
       </KeyboardAvoidingView>
@@ -178,16 +180,16 @@ const styles = StyleSheet.create({
   titleStyle: {
     fontSize: 20,
     fontWeight: '500',
-    margin: 30,
+    marginTop: 25,
     alignSelf: 'center'
   },
   input: {
     width: '100%',
-    height: 40,
+    height: 43,
     borderColor: 'black',
     borderWidth: 1,
     borderRadius: 5,
-    margin: 5,
+    margin: 10,
     alignSelf: 'center',
     backgroundColor: '#fff',
     paddingLeft: 10
@@ -203,13 +205,17 @@ const styles = StyleSheet.create({
     paddingBottom: 30,
   },
   button: {
-    backgroundColor: '#00d2da',
     width: 100,
-    height: 30,
+    height: 'auto',
+    borderRadius: 10,
+    padding: 10,
+    marginTop: 20,
     alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 5,
-    marginTop: 25
+    backgroundColor: '#289fe4a6',
+  },
+  textButton: {
+    fontWeight: '500',
+    fontSize: 15
   },
   error: {
     color: '#ff0000',
@@ -238,11 +244,11 @@ const pickerSelectStyles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'black',
     borderRadius: 5,
-    backgroundColor: 'white',
-    margin: 10,
+    marginTop: 10,
+    marginBottom: 10,
     width: '100%'
   },
   placeholder: {
-    color: 'gray',
+    color: '#bdbdbd',
   },
 })

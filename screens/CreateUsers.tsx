@@ -105,6 +105,7 @@ export default function CreateUsers({ navigation }: CreationProps) {
                                 style={styles.input}
                                 value={name}
                                 onChangeText={setName}
+                                placeholder='Digite o nome completo'
                             />
                             <Text style={styles.textInput}>{profile === 'motorista' ? 'CPF' : 'CNPJ'}</Text>
                             <TextInput
@@ -112,12 +113,14 @@ export default function CreateUsers({ navigation }: CreationProps) {
                                 value={document}
                                 onChangeText={setDocument}
                                 keyboardType='numeric'
+                                placeholder='Digite o número do documento'
                             />
                             <Text style={styles.textInput}>Endereço Completo</Text>
                             <TextInput
                                 style={styles.input}
                                 value={address}
                                 onChangeText={setAddress}
+                                placeholder='Digite o endereço'
                             />
                             <Text style={styles.textTitle}>Dados de login</Text>
                             <Text style={styles.textInput}>E-mail</Text>
@@ -126,6 +129,7 @@ export default function CreateUsers({ navigation }: CreationProps) {
                                 value={email}
                                 onChangeText={setEmail}
                                 keyboardType="email-address"
+                                placeholder='Digite o e-mail'
                             />
                             <Text style={styles.textInput}>Senha</Text>
                             <TextInput
@@ -133,6 +137,7 @@ export default function CreateUsers({ navigation }: CreationProps) {
                                 value={password}
                                 onChangeText={setPassword}
                                 secureTextEntry
+                                placeholder='Digite a senha'
                             />
                             <Text style={styles.textInput}>Confirme a senha</Text>
                             <TextInput
@@ -140,12 +145,13 @@ export default function CreateUsers({ navigation }: CreationProps) {
                                 value={confirmPassword}
                                 onChangeText={setConfirmPassword}
                                 secureTextEntry
+                                placeholder='Digite a confirmação da senha'
                             />
                         </View>
                         {errorMessage ? <Text style={styles.errorText}>{errorMessage}</Text> : null}
 
                         <TouchableOpacity style={styles.button} onPress={handleLogin}>
-                            <Text>Cadastrar</Text>
+                            <Text style={styles.textStyle}>Cadastrar</Text>
                         </TouchableOpacity>
                     </>
                 </ScrollView>
@@ -160,12 +166,12 @@ const styles = StyleSheet.create({
         backgroundColor: '#F2F2F2',
     },
     container: {
-        flex: 1,
+        flex: 1
     },
     icons: {
         width: 70,
         height: 70,
-        backgroundColor: '#5cb9e432',
+        backgroundColor: '#289fe4a6',
         borderRadius: 50,
         borderColor: 'transparent',
         borderWidth: 3,
@@ -184,11 +190,13 @@ const styles = StyleSheet.create({
     },
     input: {
         width: '100%',
-        height: 30,
+        height: 40,
         borderColor: 'black',
         borderWidth: 1,
         borderRadius: 5,
-        margin: 5
+        margin: 5,
+        paddingLeft: 5,
+        backgroundColor: '#fff'
     },
     textInput: {
         alignSelf: 'flex-start'
@@ -203,13 +211,13 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     button: {
-        backgroundColor: '#5cb9e4ae',
         width: 100,
-        height: 30,
+        height: 'auto',
+        borderRadius: 10,
+        padding: 10,
+        marginTop: 20,
         alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: 5,
-        marginTop: 25
+        backgroundColor: '#289fe4a6'
     },
     scroll: {
         alignItems: 'center',
@@ -217,5 +225,9 @@ const styles = StyleSheet.create({
     },
     errorText: {
         color: '#ff0000'
+    },
+    textStyle: {
+        fontWeight: '500',
+        fontSize: 15
     }
 });

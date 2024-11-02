@@ -35,7 +35,7 @@ export default function Login({ navigation }: LoginProps) {
             navigation.dispatch(
                 CommonActions.reset({
                     index: 0,
-                    routes: [{ name: 'Products' }],
+                    routes: [{ name: 'TrackMovements' }],
                 })
             );
         }
@@ -92,7 +92,7 @@ export default function Login({ navigation }: LoginProps) {
                 source={require('../assets/pharma.json')}
                 style={{ width: 200, height: 200 }}
             />
-
+            <Text style={styles.title}>PharmaFlow</Text>
             <View style={styles.form}>
                 <Text>E-mail</Text>
                 <TextInput
@@ -113,7 +113,7 @@ export default function Login({ navigation }: LoginProps) {
                 {errorMessage ? <Text style={styles.errorText}>{errorMessage}</Text> : null}
                 <View style={styles.buttonAlignment}>
                     <TouchableOpacity style={styles.button} onPress={handleLogin}>
-                        <Text>Entrar</Text>
+                        <Text style={styles.textButton}>Entrar</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -139,6 +139,8 @@ const styles = StyleSheet.create({
         padding: 10,
         borderRadius: 10,
         backgroundColor: '#fff',
+        borderWidth: 1,
+        borderColor: '#000000'
     },
     errorText: {
         color: '#ff0000',
@@ -151,9 +153,18 @@ const styles = StyleSheet.create({
         padding: 10,
         marginTop: 20,
         alignItems: 'center',
-        backgroundColor: '#7e87ff89'
+        backgroundColor: '#289fe4a6',
+    },
+    textButton: {
+        fontWeight: '500',
+        fontSize: 15
     },
     buttonAlignment: {
         alignItems: 'center'
+    },
+    title: {
+        fontSize: 25,
+        fontWeight: '500',
+        marginBottom: 30
     }
 })

@@ -25,14 +25,14 @@ export default function Home({ navigation }: HomeProps) {
         <SafeAreaView style={styles.container}>
             <Header />
 
-            <TouchableOpacity style={styles.managementButton} onPress={() => navigation.navigate('ListProducts')}>
+            <TouchableOpacity style={styles.touchableStyle} onPress={() => navigation.navigate('ListProducts')}>
                 <Image source={require('../assets/box.png')} style={styles.image} />
                 <Text style={styles.textButton}>
                     Gerenciar estoque
                 </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.managementButton} onPress={() => navigation.navigate('Users')}>
+            <TouchableOpacity style={styles.touchableStyle} onPress={() => {console.log("Navigating to Users"); navigation.navigate('Users')}}>
                 <Image source={require('../assets/user.png')} style={styles.image} />
                 <Text style={styles.textButton}>
                     Gerenciar usuários
@@ -53,16 +53,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         gap: 30
     },
-    managementButton: {
-        backgroundColor: '#8758ff71',
+    touchableStyle: {
+        backgroundColor: '#289fe494',
         width: 350,
-        height: 100,
+        height: 90,
         borderRadius: 10,
         flexDirection: 'row',
         alignItems: 'center',
         gap: 30,
         padding: 20,
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     textButton: {
         fontSize: 22,

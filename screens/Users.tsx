@@ -17,7 +17,7 @@ type UserProps = {
     navigation: NavigationProp<any>
 }
 
-export default function Users({navigation}: UserProps) {
+export default function Users({ navigation }: UserProps) {
 
     const [users, setUsers] = useState<UsersType[]>([])
     const [userProfile, setUserProfile] = useState('')
@@ -36,12 +36,12 @@ export default function Users({navigation}: UserProps) {
 
     useFocusEffect(() => {
         axios.get(process.env.EXPO_PUBLIC_API_URL + '/users')
-        .then(response => {
-            setUsers(response.data.map((user: UsersType) => ({
-                ...user,
-                status: user.status === 1, // Converte 1 para true e 0 para false
-            })));
-        })
+            .then(response => {
+                setUsers(response.data.map((user: UsersType) => ({
+                    ...user,
+                    status: user.status === 1, // Converte 1 para true e 0 para false
+                })));
+            })
             .catch(error => console.log(error))
     })
 
@@ -51,8 +51,8 @@ export default function Users({navigation}: UserProps) {
 
             .then(response => {
                 console.log('Status alterado:', response.data)
-                setUsers(prevUsers => 
-                    prevUsers.map(user => 
+                setUsers(prevUsers =>
+                    prevUsers.map(user =>
                         user.id === id ? { ...user, status: response.data.status === 1 } : user
                     )
                 )
@@ -64,10 +64,10 @@ export default function Users({navigation}: UserProps) {
         const cardStyle = item.status ? styles.active : styles.inactive
 
         const userIcon = item.profile === 'admin'
-        ? require('../assets/administrator.png')
-        : item.profile === 'filial'
-        ? require('../assets/office.png')
-        : require('../assets/truck.png')
+            ? require('../assets/administrator.png')
+            : item.profile === 'filial'
+                ? require('../assets/office.png')
+                : require('../assets/truck.png')
 
         return (
             <View style={[styles.card, cardStyle]}>
@@ -77,8 +77,8 @@ export default function Users({navigation}: UserProps) {
                 </View>
                 <View style={styles.alignCard}>
                     <Text style={styles.textStyle}>{item.name}</Text>
-                    </View>
-                
+                </View>
+
             </View>
         )
     }
@@ -86,9 +86,10 @@ export default function Users({navigation}: UserProps) {
     return (
         <SafeAreaView style={styles.container}>
             <Header />
-            <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('CreateUsers')}>
-                    <Text>+ Novo usuário</Text>
+            <View style={styles.headerContainer}>
+                <Text style={styles.titleStyle}>Listagem de usuários</Text>
+                <TouchableOpacity style={styles.buttonStyle} onPress={() => navigation.navigate('CreateUsers')}>
+                    <Text style={styles.textStyle}>+ NOVO</Text>
                 </TouchableOpacity>
             </View>
 
@@ -109,14 +110,14 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#F2F2F2',
     },
-    button: {
-        width: 140,
+    buttonStyle: {
+        width: 100,
         height: 'auto',
         borderRadius: 10,
         padding: 10,
-        marginTop: 20,
+        marginTop: 15,
         alignItems: 'center',
-        backgroundColor: '#8758ff83'
+        backgroundColor: '#289fe4a6'
     },
     buttonContainer: {
         alignItems: 'flex-end',
@@ -131,7 +132,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         marginBottom: 15,
-
     },
     card: {
         width: '43%',
@@ -153,5 +153,15 @@ const styles = StyleSheet.create({
     },
     inactive: {
         backgroundColor: '#ff00003e'
-    }
+    },
+    headerContainer: {
+        justifyContent: 'space-between',
+        margin: 13,
+        flexDirection: 'row',
+        alignItems: 'baseline'
+    },
+    titleStyle: {
+        fontWeight: '500',
+        fontSize: 20
+    },
 })

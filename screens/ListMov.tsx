@@ -14,8 +14,8 @@ interface MovementType {
   quantity: number,
   status: string,
   quantidade: number,
-  origem: { id: number; nome: string},
-  destino: { id: number; nome: string},
+  origem: { id: number; nome: string },
+  destino: { id: number; nome: string },
   produto: { id: number; nome: string },
 }
 
@@ -70,8 +70,8 @@ export default function ListMov({ navigation }: ListProps) {
         <Text>{item.produto.nome} - {item.quantidade} UN</Text>
       </View>
       <View style={styles.itemsStyle}>
-      <Text style={styles.textStyle}>Status: </Text>
-      <Text>{item.status}</Text>
+        <Text style={styles.textStyle}>Status: </Text>
+        <Text>{item.status}</Text>
       </View>
     </View>
   )
@@ -80,12 +80,12 @@ export default function ListMov({ navigation }: ListProps) {
     <SafeAreaView style={styles.container}>
       <Header />
       <View style={styles.headerContainer}>
-      <Text style={styles.titleStyle}>
-        Listagem de movimentações
-      </Text>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('RegisterMov')}>
-        <Text style={styles.textStyle}>+ NOVA</Text>
-      </TouchableOpacity>
+        <Text style={styles.titleStyle}>
+          Listagem de movimentações
+        </Text>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('RegisterMov')}>
+          <Text style={styles.textStyle}>+ NOVA</Text>
+        </TouchableOpacity>
       </View>
 
       <FlatList
@@ -111,17 +111,20 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
     alignItems: 'center',
-    backgroundColor: '#00d2da'
+    backgroundColor: '#289fe4a6'
   },
   movementCard: {
     backgroundColor: '#fff',
     borderRadius: 10,
     padding: 15,
+    borderWidth: 1,
+    borderColor: '#000000',
     marginLeft: 30,
     marginRight: 30,
     marginBottom: 20,
     alignItems: 'flex-start',
-    gap: 15
+    gap: 15,
+
   },
   buttonContainer: {
     flexGrow: 1,
@@ -138,7 +141,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 20
   },
-  headerContainer:{
+  headerContainer: {
     justifyContent: 'space-between',
     margin: 30,
     flexDirection: 'row',
