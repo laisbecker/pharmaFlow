@@ -39,15 +39,15 @@ export default function Header() {
 
 const styles = StyleSheet.create({
     icon: {
-        width: 42,
-        height: 42
+        width: 44,
+        height: 44
     },
     header: {
         flexDirection: 'row',
         alignItems: 'center', 
         justifyContent: 'space-evenly',
-        padding: 10,
-        backgroundColor: '#5cb9e432',
+        padding: 17,
+        backgroundColor: '#289fe43d',
         width: '100%'
     },
     textStyle: {
