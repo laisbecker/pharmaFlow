@@ -50,12 +50,12 @@ export default function CreateUsers({ navigation }: CreationProps) {
             password: password
         })
             .then((response) => {
-                console.log('DEU CERTO!!!')
+                console.log('SUCESSO!')
                 Alert.alert('Cadastro criado com sucesso!')
                 navigation.navigate('Users')
             })
             .catch(() => {
-                console.log('sinto em lhe informar... CATCH')
+                console.log('CATCH!')
             })
     }
 
@@ -100,12 +100,12 @@ export default function CreateUsers({ navigation }: CreationProps) {
 
                         <View style={styles.formContainer}>
 
-                            <Text style={styles.textInput}>Nome Completo</Text>
+                            <Text style={styles.textInput}>{profile === 'motorista' ? 'Nome do Motorista' : 'Nome da Filial'}</Text>
                             <TextInput
                                 style={styles.input}
                                 value={name}
                                 onChangeText={setName}
-                                placeholder='Digite o nome completo'
+                                placeholder='Digite o nome'
                             />
                             <Text style={styles.textInput}>{profile === 'motorista' ? 'CPF' : 'CNPJ'}</Text>
                             <TextInput
@@ -195,7 +195,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 5,
         margin: 5,
-        paddingLeft: 5,
+        padding: 10,
         backgroundColor: '#fff'
     },
     textInput: {
