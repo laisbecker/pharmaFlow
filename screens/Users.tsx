@@ -47,7 +47,7 @@ export default function Users({ navigation }: UserProps) {
 
     function handleChangeStatus(id: number) {
 
-        axios.patch(`http://192.168.1.14:3000/users/${id}/toggle-status`)
+        axios.patch(`${process.env.EXPO_PUBLIC_API_URL}/users/${id}/toggle-status`)
 
             .then(response => {
                 console.log('Status alterado:', response.data)

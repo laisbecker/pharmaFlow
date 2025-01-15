@@ -55,7 +55,7 @@ export default function Login({ navigation }: LoginProps) {
             return
         }
 
-        axios.post(process.env.EXPO_PUBLIC_API_URL + '/login', {
+        axios.post(`${process.env.EXPO_PUBLIC_API_URL}/login`, {
             email,
             password
         })
