@@ -6,7 +6,6 @@
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
 - [Telas do Aplicativo](#telas-app)
 - [Configuração e Execução do Projeto](#configuracao-e-execucao)
-- [Estrutura do Projeto](#estrutura-do-projeto)
 - [Melhorias Futuras](#melhorias-futuras)
 
 ## <a id="introducao"></a>1. Introdução
@@ -39,25 +38,33 @@ O Aplicativo PharmaFlow foi desenvolvido como objetivo de otimizar o controle de
 
 ## <a id="telas-app"></a>4. Telas do sistema
 
-###Tela de Login
-![Tela de Login](./assets/loginimg.jpeg)
-###Tela inicial no usuário de perfil Admin
-![Home - Admin](./assets/home-adm.jpeg)
-###Tela de listagem de produtos
-![Tela de listagem de produtos](./assets/listprod.jpeg)  
-###Tela de listagem usuários
-![Tela de listagem usuários](./assets/usuarios-adm.jpeg)
-###Tela de criação de usuários
-![Tela de criação de user Filial](./assets/criar-branch.jpeg)
-![Tela de criação de user Motorista](./assets/criar-user.jpeg)
-###Tela de listagem de movimentações - Filiais
-![Tela de listagem de movimentações](./assets/listmov.jpeg)
-###Tela de criação de movimentações -  Filiais
-![Tela de criação de movimentações](./assets/criar-mov.jpeg)
-###Tela de controle de movimentações - Motoristas
-![Tela de controle de movimentações](./assets/controle-mov.jpeg)
-###Tela de mapa de trajeto entre as filiais
-![Tela de mapa](./assets/mapa.jpeg)  
+### Tela de Login
+<img src="./assets/loginimg.jpeg" alt="Tela de Login" width="200" />
+
+### Tela inicial no usuário de perfil Admin
+<img src="./assets/home-adm.jpeg" alt="Home - Admin" width="200" />
+
+### Tela de listagem de produtos
+<img src="./assets/listprod.jpeg" alt="Listagem de Produtos" width="200" />
+
+### Tela de listagem usuários
+<img src="./assets/usuarios-adm.jpeg" alt="Listagem de Usuários" width="200" />
+
+### Tela de criação de usuários
+<img src="./assets/criar-branch.jpeg" alt="Criação de User Filial" width="200" />
+<img src="./assets/criar-user.jpeg" alt="Criação de User Motorista" width="200" />
+
+### Tela de listagem de movimentações - Filiais
+<img src="./assets/listmov.jpeg" alt="Listagem de Movimentações" width="200" />
+
+### Tela de criação de movimentações - Filiais
+<img src="./assets/criar-mov.jpeg" alt="Criação de Movimentações" width="200" />
+
+### Tela de controle de movimentações - Motoristas
+<img src="./assets/controle-mov.jpeg" alt="Controle de Movimentações" width="200" />
+
+### Tela de mapa de trajeto entre as filiais
+<img src="./assets/mapa.jpeg" alt="Mapa de Trajeto" width="200" />
 
 ##  <a id="configuracao-e-execucao"></a>5. Configuração e Execução do Projeto
 
@@ -76,16 +83,13 @@ O Aplicativo PharmaFlow foi desenvolvido como objetivo de otimizar o controle de
    cp .env-example .env
    npm run start
    ```
-
-Abra o arquivo .env e insira seu IP.
-
+   
 3. Baixe o EXPO em seu celular, e leia o QR code que vai aparecer no terminal do fron-end depois do comando npm run start.
 
-4. Usuário para Login inicial:
+4. Utilize o usuário abaixo para o Login inicial (perfil Admin:
 
-Admin (Acessa a listagem de produtos existentes em todas as filiais, e gerencia os usuários):
-Email: admin@gmail.com
-Senha: 123456
+   Email: admin@gmail.com,
+   Senha: 123456
 
 ##  <a id="melhorias-futuras"></a>6. Melhorias futuras:
 
