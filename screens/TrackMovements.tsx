@@ -7,6 +7,7 @@ import axios from 'axios'
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import FormattedDate from '../components/FormattedDate'
 import * as ImagePicker from 'expo-image-picker'
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 interface MovementType {
   id: number,
@@ -145,11 +146,11 @@ export default function TrackMovements({ navigation }: Track) {
   const renderProgressBar = (status: string) => {
     let progressStyle
 
-    if (status === 'Created') {
+    if (status === 'created') {
       progressStyle = styles.progressCreated
-    } else if (status === 'Em Trânsito') {
+    } else if (status === 'em transito') {
       progressStyle = styles.progressOngoing
-    } else if (status === 'Coleta Finalizada') {
+    } else if (status === 'Coleta finalizada') {
       progressStyle = styles.progressCompleted
     }
 
@@ -161,14 +162,14 @@ export default function TrackMovements({ navigation }: Track) {
   }
 
   const renderMovement = ({ item }: { item: MovementType }) => {
-    const isStarted = item.status === 'Em Trânsito'
-    const isFinished = item.status === 'Coleta Finalizada'
+    const isStarted = item.status === 'em transito'
+    const isFinished = item.status === 'Coleta finalizada'
     let cardBackgroundColor = '#d9dae6'
 
     if (isStarted) {
-      cardBackgroundColor = 'salmon'
+      cardBackgroundColor = '#d4f4ff'
     } else if (isFinished) {
-      cardBackgroundColor = '#32CD32'
+      cardBackgroundColor = '#daffda'
     }
 
     return (
@@ -230,13 +231,16 @@ export default function TrackMovements({ navigation }: Track) {
     <SafeAreaView style={styles.container}>
       <Header />
       <Text style={styles.titleStyle}>Controle de movimentações</Text>
-      {uploading && <ActivityIndicator size="large" color="#0000ff" />}
+      {uploading && <ActivityIndicator size="large" color="#a8a8a8" />}
       <FlatList
         data={movements}
         renderItem={renderMovement}
         keyExtractor={(item) => item.id.toString()}
       />
-      <Button title="Logout" onPress={handleLogout} />
+      <TouchableOpacity style={styles.buttonContainer} onPress={handleLogout}>
+        <MaterialCommunityIcons name="exit-to-app" size={24} color="black" />
+        <Text style={styles.logoutButton}>Sair</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   )
 }
@@ -253,7 +257,7 @@ const styles = StyleSheet.create({
     padding: 10,
     marginTop: 20,
     alignItems: 'center',
-    backgroundColor: '#289fe4a6',
+    backgroundColor: '#289fe4a6'
   },
   textButton: {
     fontWeight: '500',
@@ -305,25 +309,36 @@ const styles = StyleSheet.create({
   progressBarBackground: {
     width: '100%',
     height: 10,
-    backgroundColor: '#5d7f8f',
+    backgroundColor: '#d3d3d3',
     borderRadius: 5,
   },
   progressCreated: {
     height: '100%',
     width: '10%',
-    backgroundColor: '#FFD700',
+    backgroundColor: '#005a00',
     borderRadius: 5,
   },
   progressOngoing: {
     height: '100%',
     width: '50%',
-    backgroundColor: '#FF8C00',
+    backgroundColor: '#005a00',
     borderRadius: 5,
   },
   progressCompleted: {
     height: '100%',
     width: '100%',
-    backgroundColor: '#32CD32',
+    backgroundColor: '#005a00',
     borderRadius: 5,
   },
+  buttonContainer: {
+    marginVertical: 10,
+    alignSelf: 'center',
+    flexDirection: 'row',
+    gap: 5
+  },
+  logoutButton: {
+    fontSize: 18,
+    fontWeight: '500',
+    textDecorationLine: 'underline'
+  }
 })

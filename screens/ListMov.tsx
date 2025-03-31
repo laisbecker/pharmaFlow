@@ -4,7 +4,8 @@ import React, { useState } from 'react';
 import { useFocusEffect } from '@react-navigation/native';
 import Header from '../components/Header';
 import axios from 'axios';
-import AsyncStorage from "@react-native-async-storage/async-storage"
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 interface MovementType {
   id: number,
@@ -93,9 +94,10 @@ export default function ListMov({ navigation }: ListProps) {
         renderItem={renderMovement}
         keyExtractor={(item) => item.id.toString()}
       />
-      <View style={styles.buttonContainer}>
-        <Button title="Logout" onPress={handleLogout} />
-      </View>
+      <TouchableOpacity style={styles.buttonContainer} onPress={handleLogout}>
+        <MaterialCommunityIcons name="exit-to-app" size={24} color="black"/>
+        <Text style={styles.logoutButton}>Sair</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 }
@@ -124,12 +126,6 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     alignItems: 'flex-start',
     gap: 15,
-
-  },
-  buttonContainer: {
-    flexGrow: 1,
-    alignSelf: 'center',
-    justifyContent: 'flex-end'
   },
   textStyle: {
     fontWeight: '500'
@@ -146,5 +142,16 @@ const styles = StyleSheet.create({
     margin: 30,
     flexDirection: 'row',
     alignItems: 'center'
+  },
+  buttonContainer: {
+    marginVertical: 10,
+    alignSelf: 'center',
+    flexDirection: 'row',
+    gap: 5
+  },
+  logoutButton: {
+    fontSize: 18,
+    fontWeight: '500',
+    textDecorationLine: 'underline'
   }
 });

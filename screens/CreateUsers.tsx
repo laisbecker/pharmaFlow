@@ -1,3 +1,4 @@
+import React from 'react';
 import { SafeAreaView, StyleSheet, Text, TouchableOpacity, View, TextInput, KeyboardAvoidingView, Platform, ScrollView, Alert } from 'react-native';
 import Header from "../components/Header"
 import { MaterialCommunityIcons } from '@expo/vector-icons'

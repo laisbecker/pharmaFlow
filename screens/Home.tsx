@@ -1,7 +1,8 @@
-import { SafeAreaView, StyleSheet, TouchableOpacity, Text, Image, Button, View } from "react-native"
+import { SafeAreaView, StyleSheet, TouchableOpacity, Text, Image, View } from "react-native"
 import Header from "../components/Header"
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import { CommonActions, NavigationProp } from "@react-navigation/native";
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 type HomeProps = {
     navigation: NavigationProp<any>
@@ -24,7 +25,6 @@ export default function Home({ navigation }: HomeProps) {
     return (
         <SafeAreaView style={styles.container}>
             <Header />
-
             <TouchableOpacity style={styles.touchableStyle} onPress={() => navigation.navigate('ListProducts')}>
                 <Image source={require('../assets/box.png')} style={styles.image} />
                 <Text style={styles.textButton}>
@@ -38,8 +38,11 @@ export default function Home({ navigation }: HomeProps) {
                     Gerenciar usuários
                 </Text>
             </TouchableOpacity>
-            <View style={styles.buttonContainer}>
-                <Button title="Logout" onPress={handleLogout} />
+            <View style={styles.logoutContainer}>
+                <TouchableOpacity style={styles.button} onPress={handleLogout}>
+                    <MaterialCommunityIcons name="exit-to-app" size={24} color="black" />
+                    <Text style={styles.logoutButton} >Sair</Text>
+                </TouchableOpacity>
             </View>
         </SafeAreaView >
 
@@ -72,9 +75,18 @@ const styles = StyleSheet.create({
         width: 60,
         height: 60
     },
-    buttonContainer: {
-        flexGrow: 1,
-        alignItems: 'flex-end',
-        justifyContent: 'flex-end'
+    button: {
+        flexDirection: 'row',
+        gap: 5
+    },
+    logoutButton: {
+        fontSize: 18,
+        fontWeight: '500',
+        textDecorationLine: 'underline'
+    },
+    logoutContainer: {
+        flex: 1,
+        justifyContent: 'flex-end',
+        paddingBottom: 10
     }
 })
